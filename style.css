@@ -170,3 +170,59 @@ h2 {
 .contact-note {
     margin-top: 20px;
 }
+
+/* Contact page layout */
+
+.legal-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px;
+}
+
+/* Make email links use brand color instead of blue */
+
+.legal-container a {
+    color: #D9D4C1;
+}
+
+.legal-container a:hover {
+    opacity: 0.8;
+}
+
+/* Contact form styling */
+
+.contact-form {
+    max-width: 700px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.contact-form label {
+    font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    width: fit-content;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    background: #F3E56B;
+    color: #D9D4C1;
+}
+
+.contact-form button:hover {
+    opacity: 0.9;
+}
