@@ -220,9 +220,18 @@ h2 {
     font-size: 16px;
     font-weight: 600;
     background: #F3E56B;
-    color: #D9D4C1;
+    color: #274C55;
 }
 
 .contact-form button:hover {
     opacity: 0.9;
+}
+
+.legal-container h2 {
+    margin-bottom: 0;
+}
+
+.legal-container h2 + p {
+    margin-top: 0;
+    margin-bottom: 12px;
 }
