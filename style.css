@@ -269,3 +269,10 @@ h2 {
     font-size: 0.95rem;
     opacity: 0.9;
 }
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: 12px;
+    color: var(--white);
+}
