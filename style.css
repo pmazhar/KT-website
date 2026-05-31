@@ -268,7 +268,7 @@ h2 {
     width: 100%;
     text-align: center;
     margin-top: 12px;
-    color: var(--white);
+    color: #ffffff !important;
     font-size: 0.95rem;
-    opacity: 0.9;
+    opacity: 1;
 }
