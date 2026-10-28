@@ -7,8 +7,7 @@
       "namespace": "android_app",
       "package_name": "com.kojatravels.app",
       "sha256_cert_fingerprints": [
-        "A7:0E:11:F0:B6:40:DC:F6:43:FE:39:9F:DA:58:72:4B:72:B2:4F:10:73:DE:79:3E:79:C9:43:F0:A0:76:59:EC",
-        "REPLACE_WITH_PLAY_APP_SIGNING_SHA256"
+        "A7:0E:11:F0:B6:40:DC:F6:43:FE:39:9F:DA:58:72:4B:72:B2:4F:10:73:DE:79:3E:79:C9:43:F0:A0:76:59:EC"
       ]
     }
   }
