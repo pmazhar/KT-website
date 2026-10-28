@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open in Koja Travels</title>
+<meta name="robots" content="noindex">
+<!--
+  Fallback for every Koja deep link.
+
+  GitHub Pages serves this file for any path it does not have, which is
+  exactly the set of paths the app owns: /trip/…, /place/…, /post/…,
+  /forum/…, /user/…, /city/…. When the app is installed the link never gets
+  here — the OS hands it straight to the app. This page is what someone sees
+  when it is not.
+
+  It does three things, in order of usefulness: offers to open the app
+  anyway (for the case where the association file has not propagated yet),
+  points at the stores, and says what the link was for so the page is not a
+  dead end. Anything it does not recognise falls back to the home page.
+-->
+<style>
+  :root {
+    --teal: #274c55;
+    --cream: #f6f6ee;
+    --sun: #f9f5b6;
+    --ink: #1e1e1e;
+    --muted: #5d6b6f;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    line-height: 1.5;
+  }
+  main { width: 100%; max-width: 420px; text-align: center; }
+  .mark {
+    font-size: 34px; font-weight: 800; letter-spacing: -1px;
+    color: var(--teal); margin: 0 0 28px;
+  }
+  h1 {
+    font-size: 26px; line-height: 1.25; margin: 0 0 10px; color: var(--teal);
+  }
+  p.lead { font-size: 16px; color: var(--muted); margin: 0 0 28px; }
+  .btn {
+    display: block; width: 100%; padding: 15px 18px; margin: 0 0 12px;
+    border: 0; border-radius: 12px; font-size: 16px; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+  }
+  .btn-primary { background: var(--teal); color: #fff; }
+  .btn-store {
+    background: #fff; color: var(--teal);
+    border: 1px solid rgba(39, 76, 85, 0.22);
+  }
+  .btn-store[hidden] { display: none; }
+  .hint { font-size: 13px; color: var(--muted); margin-top: 22px; }
+  .hint a { color: var(--teal); }
+</style>
+</head>
+<body>
+<main>
+  <div class="mark">koja</div>
+  <h1 id="headline">Open this in Koja Travels</h1>
+  <p class="lead" id="lead">
+    Get the app to see it.
+  </p>
+
+  <a class="btn btn-primary" id="open-app" href="#">Open in the app</a>
+  <a class="btn btn-store" id="ios"
+     href="https://apps.apple.com/app/id6777072715">Download on the App Store</a>
+  <a class="btn btn-store" id="android"
+     href="https://play.google.com/store/apps/details?id=com.kojatravels.app">Get it on Google Play</a>
+
+  <p class="hint">
+    Already installed? Tap <strong>Open in the app</strong>.
+    Or <a href="/">go to kojatravels.com</a>.
+  </p>
+</main>
+
+<script>
+(function () {
+  var path = window.location.pathname.replace(/^\/+/, '');
+  var segments = path.split('/').filter(Boolean);
+  var kind = (segments[0] || '').toLowerCase();
+
+  // What the link pointed at, so the page says something true rather than
+  // "page not found".
+  var WHAT = {
+    trip:  ['a trip board', 'Someone shared a trip board with you.'],
+    place: ['a place', 'Someone shared a place with you.'],
+    post:  ['a post', 'Someone shared a post with you.'],
+    forum: ['a question', 'Someone shared a travel question with you.'],
+    user:  ['a profile', 'Someone shared their Koja profile with you.'],
+    city:  ['a city', 'Someone shared a city guide with you.']
+  };
+
+  var known = Object.prototype.hasOwnProperty.call(WHAT, kind);
+
+  if (known) {
+    var isInvite = kind === 'trip' && segments[2] === 'invite';
+    document.getElementById('headline').textContent =
+      isInvite ? 'You have been invited to a trip board'
+               : 'Open ' + WHAT[kind][0] + ' in Koja Travels';
+    document.getElementById('lead').textContent =
+      isInvite
+        ? 'Install Koja Travels to join the board and start planning together.'
+        : WHAT[kind][1] + ' Install the app to open it.';
+  } else {
+    // Not one of ours — an ordinary missing page.
+    document.getElementById('headline').textContent = 'Page not found';
+    document.getElementById('lead').textContent =
+      'That link does not point anywhere on kojatravels.com.';
+    document.getElementById('open-app').setAttribute('hidden', '');
+  }
+
+  // Try the app's own scheme. This is the one case the OS cannot handle for
+  // us: the app is installed but the domain association has not been picked
+  // up yet.
+  var appUrl = 'koja://' + path + window.location.search;
+  document.getElementById('open-app').setAttribute('href', appUrl);
+
+  // Show only the store that can actually serve this device.
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) ||
+              (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isAndroid = /Android/.test(ua);
+  if (isIOS) document.getElementById('android').setAttribute('hidden', '');
+  if (isAndroid) document.getElementById('ios').setAttribute('hidden', '');
+})();
+</script>
+</body>
+</html>

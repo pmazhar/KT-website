@@ -1,0 +1,20 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["4BJ4GT2FJ4.com.kojatravels.app"],
+        "components": [
+          { "/": "/trip/*", "comment": "Trip board, and invite links beneath it" },
+          { "/": "/place/*", "comment": "Place detail" },
+          { "/": "/post/*", "comment": "Feed post with its comments" },
+          { "/": "/forum/*", "comment": "Forum question with its answers" },
+          { "/": "/user/*", "comment": "User profile" },
+          { "/": "/city/*", "comment": "City page" }
+        ]
+      }
+    ]
+  },
+  "webcredentials": {
+    "apps": ["4BJ4GT2FJ4.com.kojatravels.app"]
+  }
+}
